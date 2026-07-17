@@ -5,6 +5,7 @@ import joblib
 # Load the trained model
 deployed_dt = joblib.load("diabetes_prediction_model.pkl")
 
+
 # Prediction Function
 def predict_diabetes(
     Pregnancies,
@@ -34,6 +35,7 @@ def predict_diabetes(
     else:
         return "✅ Prediction: Low Risk of Diabetes (Negative)"
 
+
 # Gradio Interface
 interface = gr.Interface(
     fn=predict_diabetes,
@@ -48,8 +50,21 @@ interface = gr.Interface(
         gr.Number(label="Age (Years)")
     ],
     outputs=gr.Textbox(label="Prediction Result"),
-    title="Diabetes Prediction System",
-    description="Enter the patient's medical information to predict diabetes risk using a Decision Tree model."
+    title="🩺 Diabetes Prediction System",
+    description="""
+This web application predicts the risk of diabetes using a Decision Tree Machine Learning model.
+
+📌 Developed by: **Prachi Valecha**
+🏫 College: **Panipat Institute of Engineering and Technology (PIET), Panipat**
+""",
+    article="""
+### Instructions
+- Enter all the patient's medical details.
+- Click **Submit** to get the prediction.
+- The prediction is generated using a trained Decision Tree Machine Learning model.
+
+**Note:** This application is for educational purposes only and should not be considered a medical diagnosis.
+"""
 )
 
 if __name__ == "__main__":
